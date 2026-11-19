@@ -1,0 +1,1149 @@
+{
+  "generated_at": "2026-11-20T01:38:35.602740",
+  "tasks": {
+    "clustering": {
+      "dataset_name": "Mall Customers",
+      "task_type": "Clustering",
+      "file_name": "Mall_Customers.csv",
+      "total_samples": 200,
+      "features_used": [
+        "Annual Income (k$)",
+        "Spending Score (1-100)"
+      ],
+      "target": "Unsupervised (Customer Segments)",
+      "best_algorithm": "K-Means Clustering",
+      "algorithms": {
+        "K-Means Clustering": {
+          "name": "K-Means Clustering",
+          "is_best": true,
+          "hyperparameters": {
+            "n_clusters": 5,
+            "init": "k-means++",
+            "n_init": 10,
+            "random_state": 42
+          },
+          "metrics": {
+            "silhouette_score": 0.5547,
+            "calinski_harabasz_score": 248.65,
+            "davies_bouldin_score": 0.5722,
+            "inertia": 65.57
+          },
+          "cluster_distribution": {
+            "Cluster 0": 81,
+            "Cluster 1": 39,
+            "Cluster 3": 35,
+            "Cluster 4": 23,
+            "Cluster 2": 22
+          },
+          "insights": "K-Means achieved the highest silhouette score (0.5547), demonstrating tight intra-cluster cohesion and well-separated centroids across 5 customer personas."
+        },
+        "Agglomerative Clustering": {
+          "name": "Agglomerative Clustering",
+          "is_best": false,
+          "hyperparameters": {
+            "n_clusters": 5,
+            "linkage": "ward",
+            "affinity": "euclidean"
+          },
+          "metrics": {
+            "silhouette_score": 0.5538,
+            "calinski_harabasz_score": 244.41,
+            "davies_bouldin_score": 0.5779
+          },
+          "cluster_distribution": {
+            "Cluster 2": 85,
+            "Cluster 1": 39,
+            "Cluster 0": 32,
+            "Cluster 4": 23,
+            "Cluster 3": 21
+          },
+          "insights": "Hierarchical bottom-up agglomerative clustering matched closely with silhouette 0.5538, proving high structural stability of the 5 customer segments."
+        }
+      },
+      "visualization_data": {
+        "scatter_samples": [
+          {
+            "customer_id": 1,
+            "income": 15.0,
+            "spending": 39.0,
+            "age": 19,
+            "gender": "Male",
+            "km_cluster": 4,
+            "agg_cluster": 4
+          },
+          {
+            "customer_id": 2,
+            "income": 15.0,
+            "spending": 81.0,
+            "age": 21,
+            "gender": "Male",
+            "km_cluster": 2,
+            "agg_cluster": 3
+          },
+          {
+            "customer_id": 3,
+            "income": 16.0,
+            "spending": 6.0,
+            "age": 20,
+            "gender": "Female",
+            "km_cluster": 4,
+            "agg_cluster": 4
+          },
+          {
+            "customer_id": 4,
+            "income": 16.0,
+            "spending": 77.0,
+            "age": 23,
+            "gender": "Female",
+            "km_cluster": 2,
+            "agg_cluster": 3
+          },
+          {
+            "customer_id": 5,
+            "income": 17.0,
+            "spending": 40.0,
+            "age": 31,
+            "gender": "Female",
+            "km_cluster": 4,
+            "agg_cluster": 4
+          },
+          {
+            "customer_id": 6,
+            "income": 17.0,
+            "spending": 76.0,
+            "age": 22,
+            "gender": "Female",
+            "km_cluster": 2,
+            "agg_cluster": 3
+          },
+          {
+            "customer_id": 7,
+            "income": 18.0,
+            "spending": 6.0,
+            "age": 35,
+            "gender": "Female",
+            "km_cluster": 4,
+            "agg_cluster": 4
+          },
+          {
+            "customer_id": 8,
+            "income": 18.0,
+            "spending": 94.0,
+            "age": 23,
+            "gender": "Female",
+            "km_cluster": 2,
+            "agg_cluster": 3
+          },
+          {
+            "customer_id": 9,
+            "income": 19.0,
+            "spending": 3.0,
+            "age": 64,
+            "gender": "Male",
+            "km_cluster": 4,
+            "agg_cluster": 4
+          },
+          {
+            "customer_id": 10,
+            "income": 19.0,
+            "spending": 72.0,
+            "age": 30,
+            "gender": "Female",
+            "km_cluster": 2,
+            "agg_cluster": 3
+          },
+          {
+            "customer_id": 11,
+            "income": 19.0,
+            "spending": 14.0,
+            "age": 67,
+            "gender": "Male",
+            "km_cluster": 4,
+            "agg_cluster": 4
+          },
+          {
+            "customer_id": 12,
+            "income": 19.0,
+            "spending": 99.0,
+            "age": 35,
+            "gender": "Female",
+            "km_cluster": 2,
+            "agg_cluster": 3
+          },
+          {
+            "customer_id": 13,
+            "income": 20.0,
+            "spending": 15.0,
+            "age": 58,
+            "gender": "Female",
+            "km_cluster": 4,
+            "agg_cluster": 4
+          },
+          {
+            "customer_id": 14,
+            "income": 20.0,
+            "spending": 77.0,
+            "age": 24,
+            "gender": "Female",
+            "km_cluster": 2,
+            "agg_cluster": 3
+          },
+          {
+            "customer_id": 15,
+            "income": 20.0,
+            "spending": 13.0,
+            "age": 37,
+            "gender": "Male",
+            "km_cluster": 4,
+            "agg_cluster": 4
+          },
+          {
+            "customer_id": 16,
+            "income": 20.0,
+            "spending": 79.0,
+            "age": 22,
+            "gender": "Male",
+            "km_cluster": 2,
+            "agg_cluster": 3
+          },
+          {
+            "customer_id": 17,
+            "income": 21.0,
+            "spending": 35.0,
+            "age": 35,
+            "gender": "Female",
+            "km_cluster": 4,
+            "agg_cluster": 4
+          },
+          {
+            "customer_id": 18,
+            "income": 21.0,
+            "spending": 66.0,
+            "age": 20,
+            "gender": "Male",
+            "km_cluster": 2,
+            "agg_cluster": 3
+          },
+          {
+            "customer_id": 19,
+            "income": 23.0,
+            "spending": 29.0,
+            "age": 52,
+            "gender": "Male",
+            "km_cluster": 4,
+            "agg_cluster": 4
+          },
+          {
+            "customer_id": 20,
+            "income": 23.0,
+            "spending": 98.0,
+            "age": 35,
+            "gender": "Female",
+            "km_cluster": 2,
+            "agg_cluster": 3
+          },
+          {
+            "customer_id": 21,
+            "income": 24.0,
+            "spending": 35.0,
+            "age": 35,
+            "gender": "Male",
+            "km_cluster": 4,
+            "agg_cluster": 4
+          },
+          {
+            "customer_id": 22,
+            "income": 24.0,
+            "spending": 73.0,
+            "age": 25,
+            "gender": "Male",
+            "km_cluster": 2,
+            "agg_cluster": 3
+          },
+          {
+            "customer_id": 23,
+            "income": 25.0,
+            "spending": 5.0,
+            "age": 46,
+            "gender": "Female",
+            "km_cluster": 4,
+            "agg_cluster": 4
+          },
+          {
+            "customer_id": 24,
+            "income": 25.0,
+            "spending": 73.0,
+            "age": 31,
+            "gender": "Male",
+            "km_cluster": 2,
+            "agg_cluster": 3
+          },
+          {
+            "customer_id": 25,
+            "income": 28.0,
+            "spending": 14.0,
+            "age": 54,
+            "gender": "Female",
+            "km_cluster": 4,
+            "agg_cluster": 4
+          },
+          {
+            "customer_id": 26,
+            "income": 28.0,
+            "spending": 82.0,
+            "age": 29,
+            "gender": "Male",
+            "km_cluster": 2,
+            "agg_cluster": 3
+          },
+          {
+            "customer_id": 27,
+            "income": 28.0,
+            "spending": 32.0,
+            "age": 45,
+            "gender": "Female",
+            "km_cluster": 4,
+            "agg_cluster": 4
+          },
+          {
+            "customer_id": 28,
+            "income": 28.0,
+            "spending": 61.0,
+            "age": 35,
+            "gender": "Male",
+            "km_cluster": 2,
+            "agg_cluster": 3
+          },
+          {
+            "customer_id": 29,
+            "income": 29.0,
+            "spending": 31.0,
+            "age": 40,
+            "gender": "Female",
+            "km_cluster": 4,
+            "agg_cluster": 4
+          },
+          {
+            "customer_id": 30,
+            "income": 29.0,
+            "spending": 87.0,
+            "age": 23,
+            "gender": "Female",
+            "km_cluster": 2,
+            "agg_cluster": 3
+          },
+          {
+            "customer_id": 31,
+            "income": 30.0,
+            "spending": 4.0,
+            "age": 60,
+            "gender": "Male",
+            "km_cluster": 4,
+            "agg_cluster": 4
+          },
+          {
+            "customer_id": 32,
+            "income": 30.0,
+            "spending": 73.0,
+            "age": 21,
+            "gender": "Female",
+            "km_cluster": 2,
+            "agg_cluster": 3
+          },
+          {
+            "customer_id": 33,
+            "income": 33.0,
+            "spending": 4.0,
+            "age": 53,
+            "gender": "Male",
+            "km_cluster": 4,
+            "agg_cluster": 4
+          },
+          {
+            "customer_id": 34,
+            "income": 33.0,
+            "spending": 92.0,
+            "age": 18,
+            "gender": "Male",
+            "km_cluster": 2,
+            "agg_cluster": 3
+          },
+          {
+            "customer_id": 35,
+            "income": 33.0,
+            "spending": 14.0,
+            "age": 49,
+            "gender": "Female",
+            "km_cluster": 4,
+            "agg_cluster": 4
+          },
+          {
+            "customer_id": 36,
+            "income": 33.0,
+            "spending": 81.0,
+            "age": 21,
+            "gender": "Female",
+            "km_cluster": 2,
+            "agg_cluster": 3
+          },
+          {
+            "customer_id": 37,
+            "income": 34.0,
+            "spending": 17.0,
+            "age": 42,
+            "gender": "Female",
+            "km_cluster": 4,
+            "agg_cluster": 4
+          },
+          {
+            "customer_id": 38,
+            "income": 34.0,
+            "spending": 73.0,
+            "age": 30,
+            "gender": "Female",
+            "km_cluster": 2,
+            "agg_cluster": 3
+          },
+          {
+            "customer_id": 39,
+            "income": 37.0,
+            "spending": 26.0,
+            "age": 36,
+            "gender": "Female",
+            "km_cluster": 4,
+            "agg_cluster": 4
+          },
+          {
+            "customer_id": 40,
+            "income": 37.0,
+            "spending": 75.0,
+            "age": 20,
+            "gender": "Female",
+            "km_cluster": 2,
+            "agg_cluster": 3
+          },
+          {
+            "customer_id": 41,
+            "income": 38.0,
+            "spending": 35.0,
+            "age": 65,
+            "gender": "Female",
+            "km_cluster": 4,
+            "agg_cluster": 4
+          },
+          {
+            "customer_id": 42,
+            "income": 38.0,
+            "spending": 92.0,
+            "age": 24,
+            "gender": "Male",
+            "km_cluster": 2,
+            "agg_cluster": 3
+          },
+          {
+            "customer_id": 43,
+            "income": 39.0,
+            "spending": 36.0,
+            "age": 48,
+            "gender": "Male",
+            "km_cluster": 4,
+            "agg_cluster": 4
+          },
+          {
+            "customer_id": 44,
+            "income": 39.0,
+            "spending": 61.0,
+            "age": 31,
+            "gender": "Female",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 45,
+            "income": 39.0,
+            "spending": 28.0,
+            "age": 49,
+            "gender": "Female",
+            "km_cluster": 4,
+            "agg_cluster": 4
+          },
+          {
+            "customer_id": 46,
+            "income": 39.0,
+            "spending": 65.0,
+            "age": 24,
+            "gender": "Female",
+            "km_cluster": 2,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 47,
+            "income": 40.0,
+            "spending": 55.0,
+            "age": 50,
+            "gender": "Female",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 48,
+            "income": 40.0,
+            "spending": 47.0,
+            "age": 27,
+            "gender": "Female",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 49,
+            "income": 40.0,
+            "spending": 42.0,
+            "age": 29,
+            "gender": "Female",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 50,
+            "income": 40.0,
+            "spending": 42.0,
+            "age": 31,
+            "gender": "Female",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 51,
+            "income": 42.0,
+            "spending": 52.0,
+            "age": 49,
+            "gender": "Female",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 52,
+            "income": 42.0,
+            "spending": 60.0,
+            "age": 33,
+            "gender": "Male",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 53,
+            "income": 43.0,
+            "spending": 54.0,
+            "age": 31,
+            "gender": "Female",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 54,
+            "income": 43.0,
+            "spending": 60.0,
+            "age": 59,
+            "gender": "Male",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 55,
+            "income": 43.0,
+            "spending": 45.0,
+            "age": 50,
+            "gender": "Female",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 56,
+            "income": 43.0,
+            "spending": 41.0,
+            "age": 47,
+            "gender": "Male",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 57,
+            "income": 44.0,
+            "spending": 50.0,
+            "age": 51,
+            "gender": "Female",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 58,
+            "income": 44.0,
+            "spending": 46.0,
+            "age": 69,
+            "gender": "Male",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 59,
+            "income": 46.0,
+            "spending": 51.0,
+            "age": 27,
+            "gender": "Female",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 60,
+            "income": 46.0,
+            "spending": 46.0,
+            "age": 53,
+            "gender": "Male",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 61,
+            "income": 46.0,
+            "spending": 56.0,
+            "age": 70,
+            "gender": "Male",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 62,
+            "income": 46.0,
+            "spending": 55.0,
+            "age": 19,
+            "gender": "Male",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 63,
+            "income": 47.0,
+            "spending": 52.0,
+            "age": 67,
+            "gender": "Female",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 64,
+            "income": 47.0,
+            "spending": 59.0,
+            "age": 54,
+            "gender": "Female",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 65,
+            "income": 48.0,
+            "spending": 51.0,
+            "age": 63,
+            "gender": "Male",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 66,
+            "income": 48.0,
+            "spending": 59.0,
+            "age": 18,
+            "gender": "Male",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 67,
+            "income": 48.0,
+            "spending": 50.0,
+            "age": 43,
+            "gender": "Female",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 68,
+            "income": 48.0,
+            "spending": 48.0,
+            "age": 68,
+            "gender": "Female",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 69,
+            "income": 48.0,
+            "spending": 59.0,
+            "age": 19,
+            "gender": "Male",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 70,
+            "income": 48.0,
+            "spending": 47.0,
+            "age": 32,
+            "gender": "Female",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 71,
+            "income": 49.0,
+            "spending": 55.0,
+            "age": 70,
+            "gender": "Male",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 72,
+            "income": 49.0,
+            "spending": 42.0,
+            "age": 47,
+            "gender": "Female",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 73,
+            "income": 50.0,
+            "spending": 49.0,
+            "age": 60,
+            "gender": "Female",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 74,
+            "income": 50.0,
+            "spending": 56.0,
+            "age": 60,
+            "gender": "Female",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 75,
+            "income": 54.0,
+            "spending": 47.0,
+            "age": 59,
+            "gender": "Male",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 76,
+            "income": 54.0,
+            "spending": 54.0,
+            "age": 26,
+            "gender": "Male",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 77,
+            "income": 54.0,
+            "spending": 53.0,
+            "age": 45,
+            "gender": "Female",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 78,
+            "income": 54.0,
+            "spending": 48.0,
+            "age": 40,
+            "gender": "Male",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 79,
+            "income": 54.0,
+            "spending": 52.0,
+            "age": 23,
+            "gender": "Female",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          },
+          {
+            "customer_id": 80,
+            "income": 54.0,
+            "spending": 42.0,
+            "age": 49,
+            "gender": "Female",
+            "km_cluster": 0,
+            "agg_cluster": 2
+          }
+        ],
+        "cluster_personas": [
+          "Cluster 0: Moderate Income & Spending (Sensible Middle)",
+          "Cluster 1: High Income, Low Spending (Careful / Savers)",
+          "Cluster 2: Low Income, Low Spending (Frugal)",
+          "Cluster 3: Low Income, High Spending (Careless / Spenders)",
+          "Cluster 4: High Income, High Spending (Target / VIP)"
+        ]
+      }
+    },
+    "classification": {
+      "dataset_name": "Social Network Ads",
+      "task_type": "Classification",
+      "file_name": "Social_Network_Ads.csv",
+      "total_samples": 400,
+      "train_samples": 320,
+      "test_samples": 80,
+      "features_used": [
+        "Gender",
+        "Age",
+        "EstimatedSalary"
+      ],
+      "target": "Purchased (0 = No, 1 = Yes)",
+      "best_algorithm": "Support Vector Machine (SVC)",
+      "algorithms": {
+        "Support Vector Machine (SVC)": {
+          "name": "Support Vector Machine (SVC)",
+          "is_best": true,
+          "hyperparameters": {
+            "kernel": "rbf",
+            "C": 1.0,
+            "gamma": "scale",
+            "probability": true,
+            "random_state": 42
+          },
+          "metrics": {
+            "accuracy": 91.25,
+            "f1_score": 0.8852,
+            "precision": 0.8438,
+            "recall": 0.931,
+            "roc_auc": 0.9554
+          },
+          "confusion_matrix": {
+            "true_negative": 46,
+            "false_positive": 5,
+            "false_negative": 2,
+            "true_positive": 27
+          },
+          "insights": "SVC with RBF kernel mapped non-linear age/salary purchase boundaries flawlessly, delivering the top accuracy of 91.25% and F1-score of 0.8852."
+        },
+        "Random Forest Classifier": {
+          "name": "Random Forest Classifier",
+          "is_best": false,
+          "hyperparameters": {
+            "n_estimators": 100,
+            "max_depth": 5,
+            "random_state": 42
+          },
+          "metrics": {
+            "accuracy": 90.0,
+            "f1_score": 0.8667,
+            "precision": 0.8387,
+            "recall": 0.8966,
+            "roc_auc": 0.95
+          },
+          "confusion_matrix": {
+            "true_negative": 46,
+            "false_positive": 5,
+            "false_negative": 3,
+            "true_positive": 26
+          },
+          "feature_importance": {
+            "Gender": 0.0084,
+            "Age": 0.5327,
+            "EstimatedSalary": 0.4589
+          },
+          "insights": "Random Forest achieved a strong 90.00% accuracy, showing Age (52.3%) and Estimated Salary (46.1%) dominate ad click conversion."
+        }
+      },
+      "visualization_data": {
+        "roc_curves": {
+          "svc": {
+            "fpr": [
+              0.0,
+              0.0,
+              0.0196,
+              0.0392,
+              0.0588,
+              0.0784,
+              0.098,
+              0.1961,
+              0.2157,
+              0.3725,
+              0.4118,
+              0.6667,
+              1.0
+            ],
+            "tpr": [
+              0.0,
+              0.3103,
+              0.5862,
+              0.6552,
+              0.7931,
+              0.8276,
+              0.8621,
+              0.931,
+              0.9655,
+              0.9655,
+              1.0,
+              1.0,
+              1.0
+            ]
+          },
+          "rf": {
+            "fpr": [
+              0.0,
+              0.0,
+              0.0392,
+              0.0784,
+              0.098,
+              0.1569,
+              0.2353,
+              0.451,
+              0.6471,
+              0.7843,
+              0.9608
+            ],
+            "tpr": [
+              0.0,
+              0.3103,
+              0.6207,
+              0.7241,
+              0.8966,
+              0.931,
+              0.9655,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ]
+          }
+        }
+      }
+    },
+    "boosting": {
+      "dataset_name": "Insurance Premium",
+      "task_type": "Boosting (Regression)",
+      "file_name": "insurance_pre.csv",
+      "total_samples": 1338,
+      "train_samples": 1070,
+      "test_samples": 268,
+      "features_used": [
+        "Age",
+        "Sex",
+        "BMI",
+        "Children",
+        "Smoker"
+      ],
+      "target": "charges (Annual Medical Insurance Cost in USD)",
+      "best_algorithm": "XGBoost Regressor",
+      "algorithms": {
+        "XGBoost Regressor": {
+          "name": "XGBoost Regressor",
+          "is_best": true,
+          "hyperparameters": {
+            "n_estimators": 100,
+            "learning_rate": 0.1,
+            "max_depth": 3,
+            "random_state": 42
+          },
+          "metrics": {
+            "r2_score": 0.8835,
+            "rmse": 4252.36,
+            "mae": 2400.06
+          },
+          "feature_importance": {
+            "Age": 0.0342,
+            "Sex": 0.0027,
+            "BMI": 0.0491,
+            "Children": 0.0076,
+            "Smoker": 0.9064
+          },
+          "insights": "XGBoost emerged as the best model with R\u00b2 of 0.8835 and lowest RMSE ($4,252.36). Smoking status and BMI overwhelmingly drive medical cost escalation."
+        },
+        "Gradient Boosting Regressor": {
+          "name": "Gradient Boosting Regressor",
+          "is_best": false,
+          "hyperparameters": {
+            "n_estimators": 100,
+            "learning_rate": 0.1,
+            "max_depth": 3,
+            "random_state": 42
+          },
+          "metrics": {
+            "r2_score": 0.8785,
+            "rmse": 4342.91,
+            "mae": 2424.53
+          },
+          "feature_importance": {
+            "Age": 0.1178,
+            "Sex": 0.0006,
+            "BMI": 0.1923,
+            "Children": 0.0101,
+            "Smoker": 0.6793
+          },
+          "insights": "Scikit-Learn's Gradient Boosting Regressor performed very closely with R\u00b2 of 0.8785 and MAE of $2,424.53."
+        }
+      },
+      "visualization_data": {
+        "actual_vs_predicted": [
+          {
+            "actual": 9095.07,
+            "xgb_pred": 10394.47,
+            "gbr_pred": 10427.99
+          },
+          {
+            "actual": 5272.18,
+            "xgb_pred": 5934.64,
+            "gbr_pred": 5878.93
+          },
+          {
+            "actual": 29330.98,
+            "xgb_pred": 27883.37,
+            "gbr_pred": 27846.77
+          },
+          {
+            "actual": 9301.89,
+            "xgb_pred": 9685.92,
+            "gbr_pred": 9613.28
+          },
+          {
+            "actual": 33750.29,
+            "xgb_pred": 34043.2,
+            "gbr_pred": 33859.02
+          },
+          {
+            "actual": 4536.26,
+            "xgb_pred": 5648.25,
+            "gbr_pred": 6340.61
+          },
+          {
+            "actual": 2117.34,
+            "xgb_pred": 2675.12,
+            "gbr_pred": 3001.46
+          },
+          {
+            "actual": 14210.54,
+            "xgb_pred": 14981.68,
+            "gbr_pred": 14787.79
+          },
+          {
+            "actual": 3732.63,
+            "xgb_pred": 5216.79,
+            "gbr_pred": 4856.85
+          },
+          {
+            "actual": 10264.44,
+            "xgb_pred": 10611.0,
+            "gbr_pred": 10863.58
+          },
+          {
+            "actual": 18259.22,
+            "xgb_pred": 17964.89,
+            "gbr_pred": 18133.81
+          },
+          {
+            "actual": 7256.72,
+            "xgb_pred": 7851.67,
+            "gbr_pred": 7844.08
+          },
+          {
+            "actual": 3947.41,
+            "xgb_pred": 5350.19,
+            "gbr_pred": 5368.5
+          },
+          {
+            "actual": 46151.12,
+            "xgb_pred": 45728.9,
+            "gbr_pred": 45776.19
+          },
+          {
+            "actual": 48673.56,
+            "xgb_pred": 47360.73,
+            "gbr_pred": 47173.6
+          },
+          {
+            "actual": 44202.65,
+            "xgb_pred": 45525.76,
+            "gbr_pred": 45086.27
+          },
+          {
+            "actual": 9800.89,
+            "xgb_pred": 10727.53,
+            "gbr_pred": 11029.03
+          },
+          {
+            "actual": 42969.85,
+            "xgb_pred": 45347.52,
+            "gbr_pred": 45243.44
+          },
+          {
+            "actual": 8233.1,
+            "xgb_pred": 9573.83,
+            "gbr_pred": 9427.15
+          },
+          {
+            "actual": 21774.32,
+            "xgb_pred": 24271.43,
+            "gbr_pred": 23920.66
+          },
+          {
+            "actual": 5080.1,
+            "xgb_pred": 7802.77,
+            "gbr_pred": 7810.26
+          },
+          {
+            "actual": 7441.5,
+            "xgb_pred": 9688.81,
+            "gbr_pred": 9861.52
+          },
+          {
+            "actual": 1256.3,
+            "xgb_pred": 2931.32,
+            "gbr_pred": 2976.23
+          },
+          {
+            "actual": 2755.02,
+            "xgb_pred": 2661.7,
+            "gbr_pred": 2678.54
+          },
+          {
+            "actual": 11085.59,
+            "xgb_pred": 11658.22,
+            "gbr_pred": 11622.78
+          },
+          {
+            "actual": 10923.93,
+            "xgb_pred": 12178.89,
+            "gbr_pred": 12196.8
+          },
+          {
+            "actual": 12644.59,
+            "xgb_pred": 14873.64,
+            "gbr_pred": 14773.56
+          },
+          {
+            "actual": 18804.75,
+            "xgb_pred": 7138.69,
+            "gbr_pred": 7093.97
+          },
+          {
+            "actual": 9715.84,
+            "xgb_pred": 11284.03,
+            "gbr_pred": 11112.97
+          },
+          {
+            "actual": 1131.51,
+            "xgb_pred": 3018.32,
+            "gbr_pred": 2976.23
+          }
+        ]
+      }
+    }
+  }
+}

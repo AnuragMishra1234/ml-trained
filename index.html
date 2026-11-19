@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ML Benchmark Studio | Model Comparison & Results</title>
+  <meta name="description" content="Interactive Machine Learning benchmark dashboard evaluating Clustering, Classification, and Boosting algorithms across three distinct datasets.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Chart.js for interactive charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+  <!-- Background gradient glows -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-glow bg-glow-3"></div>
+
+  <!-- Main Container -->
+  <div class="app-layout">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-left">
+        <div class="logo-badge">
+          <i data-lucide="brain-circuit" class="logo-icon"></i>
+        </div>
+        <div>
+          <div class="badge-tag">Machine Learning Evaluation Suite</div>
+          <h1 class="header-title">ML Benchmark & Analytics Studio</h1>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="themeToggleBtn" class="btn btn-secondary icon-btn" title="Toggle Theme" aria-label="Toggle Theme">
+          <i data-lucide="sun" class="sun-icon"></i>
+          <i data-lucide="moon" class="moon-icon"></i>
+        </button>
+        <button id="compareAllBtn" class="btn btn-secondary">
+          <i data-lucide="git-compare"></i> Compare Winners
+        </button>
+        <button id="exportCsvBtn" class="btn btn-primary">
+          <i data-lucide="download"></i> Export CSV
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero / KPI Banner -->
+    <section class="kpi-grid">
+      <!-- KPI 1 -->
+      <div class="kpi-card" data-filter="all">
+        <div class="kpi-header">
+          <span class="kpi-label">Total Benchmarks</span>
+          <div class="kpi-icon-wrapper blue">
+            <i data-lucide="layers"></i>
+          </div>
+        </div>
+        <div class="kpi-value">3 Datasets</div>
+        <div class="kpi-subtext">6 ML Models Trained (2 per task)</div>
+        <div class="kpi-footer-badge">Tap to show all</div>
+      </div>
+
+      <!-- KPI 2 -->
+      <div class="kpi-card" data-filter="clustering">
+        <div class="kpi-header">
+          <span class="kpi-label">Clustering Best</span>
+          <div class="kpi-icon-wrapper purple">
+            <i data-lucide="network"></i>
+          </div>
+        </div>
+        <div class="kpi-value text-purple">K-Means</div>
+        <div class="kpi-subtext">Silhouette Score: <strong>0.5547</strong> (vs 0.5538)</div>
+        <div class="kpi-footer-badge">Winner: Mall Customers</div>
+      </div>
+
+      <!-- KPI 3 -->
+      <div class="kpi-card" data-filter="classification">
+        <div class="kpi-header">
+          <span class="kpi-label">Classification Best</span>
+          <div class="kpi-icon-wrapper emerald">
+            <i data-lucide="shield-check"></i>
+          </div>
+        </div>
+        <div class="kpi-value text-emerald">SVM (RBF)</div>
+        <div class="kpi-subtext">Accuracy: <strong>91.25%</strong> | F1: <strong>0.8852</strong></div>
+        <div class="kpi-footer-badge">Winner: Social Network Ads</div>
+      </div>
+
+      <!-- KPI 4 -->
+      <div class="kpi-card" data-filter="boosting">
+        <div class="kpi-header">
+          <span class="kpi-label">Boosting Regressor</span>
+          <div class="kpi-icon-wrapper amber">
+            <i data-lucide="zap"></i>
+          </div>
+        </div>
+        <div class="kpi-value text-amber">XGBoost</div>
+        <div class="kpi-subtext">R²: <strong>0.8835</strong> | RMSE: <strong>$4,252.36</strong></div>
+        <div class="kpi-footer-badge">Winner: Insurance Premium</div>
+      </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <main class="content-section">
+      <!-- Toolbar & Filters -->
+      <div class="toolbar-card">
+        <div class="filter-pills" id="taskFilters">
+          <button class="pill-btn active" data-task="all">
+            <i data-lucide="grid"></i> All Tasks <span class="count-badge" id="countAll">6</span>
+          </button>
+          <button class="pill-btn" data-task="clustering">
+            <i data-lucide="network"></i> Clustering <span class="count-badge" id="countClustering">2</span>
+          </button>
+          <button class="pill-btn" data-task="classification">
+            <i data-lucide="check-circle-2"></i> Classification <span class="count-badge" id="countClassification">2</span>
+          </button>
+          <button class="pill-btn" data-task="boosting">
+            <i data-lucide="trending-up"></i> Boosting Regression <span class="count-badge" id="countBoosting">2</span>
+          </button>
+        </div>
+
+        <div class="toolbar-right">
+          <div class="search-box">
+            <i data-lucide="search" class="search-icon"></i>
+            <input type="text" id="searchInput" placeholder="Search algorithm, metric, or dataset..." autocomplete="off">
+            <button id="clearSearchBtn" class="clear-search-btn" style="display: none;">&times;</button>
+          </div>
+          <div class="view-toggle">
+            <button id="tableViewBtn" class="view-btn active" title="Table View" aria-label="Table View">
+              <i data-lucide="table"></i>
+            </button>
+            <button id="cardsViewBtn" class="view-btn" title="Cards View" aria-label="Cards View">
+              <i data-lucide="layout-grid"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Helper Banner -->
+      <div class="interactive-hint">
+        <i data-lucide="sparkles" class="hint-icon"></i>
+        <span><strong>Interactive Interface:</strong> Tap or click any row, card, or metric pill to view deep model diagnostics, hyperparameters, confusion matrix, and interactive charts.</span>
+      </div>
+
+      <!-- Table View Container -->
+      <div class="table-container" id="tableViewContainer">
+        <table class="benchmark-table" id="benchmarkTable">
+          <thead>
+            <tr>
+              <th class="th-dataset">Dataset & Domain</th>
+              <th class="th-task">Task Type</th>
+              <th class="th-algo">Algorithm Evaluated</th>
+              <th class="th-metric">Primary Result</th>
+              <th class="th-allmetrics">Full Metrics Breakdown</th>
+              <th class="th-status">Outcome</th>
+              <th class="th-action text-right">Interactive Action</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Dynamic rows rendered via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Cards View Container -->
+      <div class="cards-grid" id="cardsViewContainer" style="display: none;">
+        <!-- Dynamic cards rendered via JavaScript -->
+      </div>
+    </main>
+
+    <!-- Side-by-Side Model Comparison Drawer / Modal -->
+    <div class="modal-overlay" id="compareModal" style="display: none;">
+      <div class="modal-container compare-modal-container">
+        <div class="modal-header">
+          <div class="modal-title-group">
+            <div class="badge-tag gold">Head-to-Head Comparison</div>
+            <h2 class="modal-title" id="compareModalTitle">Winner vs Runner-up Faceoff</h2>
+          </div>
+          <button class="modal-close-btn" id="closeCompareModalBtn">&times;</button>
+        </div>
+        <div class="modal-body" id="compareModalBody">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Deep Detail Modal (Tapped specific item) -->
+    <div class="modal-overlay" id="detailModal" style="display: none;">
+      <div class="modal-container detail-modal-container">
+        <!-- Modal Top Bar -->
+        <div class="modal-header">
+          <div class="modal-title-group">
+            <div class="modal-badges-row">
+              <span class="badge-task" id="modalTaskBadge">Task</span>
+              <span class="badge-winner" id="modalWinnerBadge">WINNER</span>
+            </div>
+            <h2 class="modal-title" id="modalAlgoTitle">Algorithm Name</h2>
+            <div class="modal-subtitle" id="modalDatasetSubtitle">Evaluated on Dataset Name (file.csv)</div>
+          </div>
+          <button class="modal-close-btn" id="closeDetailModalBtn" aria-label="Close Modal">&times;</button>
+        </div>
+
+        <!-- Modal Tabs -->
+        <div class="modal-tabs">
+          <button class="modal-tab-btn active" data-tab="metrics">
+            <i data-lucide="bar-chart-2"></i> Performance Scorecard
+          </button>
+          <button class="modal-tab-btn" data-tab="chart">
+            <i data-lucide="line-chart"></i> Visual Diagnostics
+          </button>
+          <button class="modal-tab-btn" data-tab="params">
+            <i data-lucide="sliders"></i> Hyperparameters & Data
+          </button>
+          <button class="modal-tab-btn" data-tab="insights">
+            <i data-lucide="lightbulb"></i> Analysis & Findings
+          </button>
+        </div>
+
+        <!-- Modal Body Content Panels -->
+        <div class="modal-body">
+          <!-- Tab 1: Metrics -->
+          <div class="modal-tab-pane active" id="tabPaneMetrics">
+            <div class="scorecard-grid" id="modalScorecardGrid">
+              <!-- Metric tiles rendered via JS -->
+            </div>
+            <div id="modalSecondaryViz" class="secondary-viz-section">
+              <!-- E.g. Confusion matrix mini grid or cluster distributions -->
+            </div>
+          </div>
+
+          <!-- Tab 2: Chart / Visual Diagnostics -->
+          <div class="modal-tab-pane" id="tabPaneChart">
+            <div class="chart-wrapper">
+              <div class="chart-header">
+                <h4 id="chartHeading" class="chart-title">Visual Representation</h4>
+                <p id="chartDescription" class="chart-caption">Interactive visualization for this model.</p>
+              </div>
+              <div class="chart-canvas-box">
+                <canvas id="modalChartCanvas"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 3: Parameters & Dataset -->
+          <div class="modal-tab-pane" id="tabPaneParams">
+            <div class="params-layout">
+              <div class="params-card">
+                <h4><i data-lucide="sliders"></i> Tuned Hyperparameters</h4>
+                <div class="params-table-wrapper" id="hyperparamsWrapper">
+                  <!-- Hyperparameters key-values -->
+                </div>
+              </div>
+              <div class="params-card">
+                <h4><i data-lucide="database"></i> Dataset Specifications</h4>
+                <div class="params-table-wrapper" id="datasetSpecsWrapper">
+                  <!-- Dataset specifications -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 4: Insights -->
+          <div class="modal-tab-pane" id="tabPaneInsights">
+            <div class="insights-card">
+              <div class="insights-icon-box">
+                <i data-lucide="check-circle" class="text-emerald"></i>
+              </div>
+              <div class="insights-content">
+                <h4>Evaluation Summary & Why This Model Succeeded</h4>
+                <p id="modalInsightsText">Detailed analytical summary...</p>
+              </div>
+            </div>
+            <div class="recommendations-box">
+              <h4><i data-lucide="shield-alert"></i> Production Recommendation</h4>
+              <p id="modalRecommendationText">Ready for deployment.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <div class="modal-footer-left">
+            <span class="text-muted"><i data-lucide="clock"></i> Trained with scikit-learn & xgboost</span>
+          </div>
+          <button class="btn btn-secondary" id="modalComparePairBtn">
+            <i data-lucide="git-compare"></i> Compare with Alternative
+          </button>
+          <button class="btn btn-primary" id="modalDoneBtn">Done</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <div class="footer-left">
+        <span>© 2026 ML Benchmark Studio. Built for instant deployment on <strong>Vercel</strong>.</span>
+      </div>
+      <div class="footer-links">
+        <a href="results_table.csv" download class="footer-link">Download CSV</a>
+        <span class="separator">•</span>
+        <a href="results.json" target="_blank" class="footer-link">Raw JSON</a>
+        <span class="separator">•</span>
+        <a href="results_summary.md" target="_blank" class="footer-link">Markdown Report</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
